@@ -24,7 +24,6 @@ public class SceneMgr : TSingleton<SceneMgr>, IInitializeable
     {
         AsyncOperation asyncOp = SceneManager.LoadSceneAsync(strName);
         asyncOp.allowSceneActivation = true;
-
         while (!asyncOp.isDone && asyncOp.progress < 1)
         {
             yield return new WaitForEndOfFrame();
@@ -36,8 +35,8 @@ public class SceneMgr : TSingleton<SceneMgr>, IInitializeable
 
     private void LoadSceneFinish()
     {
-        UIMgr.Instance.ShowUI(SettingUI.Info);
         BallMgr.Instance.CreateBall();
+        UIMgr.Instance.ShowUI(SettingUI.Info);
     }
 
     public void OnDispose()

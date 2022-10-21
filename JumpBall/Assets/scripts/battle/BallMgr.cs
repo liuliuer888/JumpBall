@@ -13,11 +13,6 @@ public class BallMgr : TSingleton<BallMgr>, IInitializeable
         JumpBall ball = ObjectCache.GetObject<JumpBall>(true);
     }
 
-    public Vector3 GetRandomPosition()
-    {
-        return Vector3.zero;
-    }
-
     public void OnDispose()
     {
     }
