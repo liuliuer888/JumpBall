@@ -13,13 +13,17 @@ public class AssetItem : ICacheable
 {
     public string assetPath;
     private AssetBundle mAssetBundle;
+    /// <summary>
+    /// 当前引用数量
+    /// </summary>
+    private int mReferencesCount;
 
     public Object LoadAsset(string assetName, Type assetType)
     {
         Object result = null;
         if (GameGlobal.EnableEditorLoadMode)
         {
-            result = UnityEditor.AssetDatabase.LoadAssetAtPath(assetName, assetType);
+            result = UnityEditor.AssetDatabase.LoadAssetAtPath(assetPath + "/" + assetName, assetType);
         }
         else if (mAssetBundle != null)
         {
@@ -29,6 +33,15 @@ public class AssetItem : ICacheable
         return result;
     }
 
+    /// <summary>
+    /// 绑定Assetbundle资源
+    /// </summary>
+    /// <param name="bundle"></param>
+    public void SetAssetBundle(AssetBundle bundle)
+    {
+        mAssetBundle = bundle;
+    }
+
     public void Unload(bool unloadLoadedObjects)
     {
         if (mAssetBundle != null)
@@ -36,6 +49,31 @@ public class AssetItem : ICacheable
             mAssetBundle.Unload(unloadLoadedObjects);
             mAssetBundle = null;
         }
+    }
+
+    /// <summary>
+    /// 添加一个引用
+    /// </summary>
+    public void AddReference()
+    {
+        mReferencesCount++;
+    }
+
+    /// <summary>
+    /// 是否已经没有引用了
+    /// </summary>
+    /// <returns></returns>
+    public bool IsNoReference()
+    {
+        return mReferencesCount <= 0;
+    }
+
+    /// <summary>
+    /// 移除一个引用
+    /// </summary>
+    public void RemoveRefernce()
+    {
+        mReferencesCount--;
     }
 
     public void FreeToCache()

@@ -23,7 +23,7 @@ public class GameStart : MonoBehaviour
 
     void Start()
     {
-        
+        UIMgr.Instance.ShowUI(LoginUI.Info);
     }
 
     public void ResetGameSystem()
