@@ -35,7 +35,6 @@ public class SceneMgr : TSingleton<SceneMgr>, IInitializeable
 
     private void LoadSceneFinish()
     {
-        MoveBoxMgr.Instance.SetHitCollider();
         BallMgr.Instance.CreateBall();
         UIMgr.Instance.ShowUI(SettingUI.Info);
     }

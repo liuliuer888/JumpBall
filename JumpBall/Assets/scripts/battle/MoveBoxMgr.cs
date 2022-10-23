@@ -23,22 +23,6 @@ public class MoveBoxMgr : TSingleton<MoveBoxMgr>, IInitializeable, IUpdateable
         m_transBox.position += m_vecDir * m_fSpeed;
     }
 
-    private void OnExitCollider(Collision2D collision)
-    {
-        if (collision.gameObject.layer == (int)LayName.JUMP_BALL)
-        {
-            Vector3 closestPoint = collision.collider.ClosestPoint(m_transBox.position);//获取碰撞位置
-            //m_vecBallDir = closestPoint.normalized;
-            //collision.transform.GetComponent<JumpBall>().ChangeVelocity(m_vecDir);
-            Debug.LogError("fdfdfdfdf===" + closestPoint);
-        }
-    }
-
-    public void SetHitCollider()
-    {
-        m_transBox.GetComponentInChildren<HitTrigger>().OnExitHit = OnExitCollider;
-    }
-
     public void SetDragDir(Vector3 vecDir)
     {
         m_vecDir = vecDir;

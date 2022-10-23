@@ -22,6 +22,7 @@ public class BallMgr : TSingleton<BallMgr>, IInitializeable
             Transform transPrefab = GameObject.Instantiate(obj).transform;
             transPrefab.SetParent(transParent);
             transPrefab.GetComponent<HitTrigger>().OnHit = OnEnterCollider;
+            transPrefab.GetComponentInChildren<HitTrigger>().OnExitHit = OnExitCollider;
             ball = transPrefab.GetComponent<JumpBall>();
         }
         else
@@ -40,6 +41,15 @@ public class BallMgr : TSingleton<BallMgr>, IInitializeable
             JumpBall ball = collision.otherRigidbody.GetComponent<JumpBall>();
             ball.OnReset();
             m_listCache.Add(ball);
+        }
+    }
+
+    private void OnExitCollider(Collision2D collision)
+    {
+        if (collision.gameObject.layer == (int)LayName.MOVE_BOX)
+        {
+            Vector3 vecLocal = collision.collider.transform.position; // 获取碰撞位置
+            Vector3 closestPoint = collision.collider.ClosestPoint(vecLocal);
         }
     }
 
