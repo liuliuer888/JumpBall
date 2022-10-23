@@ -39,6 +39,7 @@ public class SettingUI : BaseUI
 
     private void OnClickSetting()
     {
+        BallMgr.Instance.CreateBall();
     }
 
     private void OnClickPause()

@@ -7,7 +7,7 @@ public class HitTrigger : MonoBehaviour
 {
     public Action<Collision2D> OnHit;
 
-    void OnColliderEnter2D(Collision2D co)
+    void OnCollisionEnter2D(Collision2D co)
 	{
         OnHit (co);
 	}
