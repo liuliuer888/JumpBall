@@ -50,6 +50,13 @@ public class BallMgr : TSingleton<BallMgr>, IInitializeable
         {
             Vector3 vecLocal = collision.collider.transform.position; // 获取碰撞位置
             Vector3 closestPoint = collision.collider.ClosestPoint(vecLocal);
+            Vector3 vecDir = -1 * closestPoint.normalized;
+            collision.otherCollider.transform.GetComponent<JumpBall>().ChangeVelocity(vecDir);
+        }
+
+        if(collision.gameObject.layer == (int)LayName.Wall_Normal)
+        {
+            collision.otherCollider.transform.GetComponent<JumpBall>().ChangeVelocity(Vector3.up);
         }
     }
 

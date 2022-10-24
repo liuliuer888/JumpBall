@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 334907179}
   - component: {fileID: 334907181}
   - component: {fileID: 334907180}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 1223454285}
   - component: {fileID: 1223454287}
   - component: {fileID: 1223454286}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 1231555461}
   - component: {fileID: 1231555463}
   - component: {fileID: 1231555462}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231555460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 5.86, z: 0}
+  m_LocalPosition: {x: 0, y: 4.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6789344}
@@ -964,7 +964,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818887438}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -3.94, z: 0}
+  m_LocalPosition: {x: 0, y: -3.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6789344}

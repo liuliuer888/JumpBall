@@ -96,7 +96,7 @@ public class AssetbundleLoader : IAssetsLoader
     /// <returns>AssetItem对象</returns>
     private AssetItem LoadAssetBundleSync(string bundleName)
     {
-        AssetItem tempItem = null;
+        AssetItem tempItem;
         string[] dependencies = mAssetManifest.GetDependencies(bundleName);
         if (dependencies != null && dependencies.Length > 0)
         {
@@ -119,11 +119,16 @@ public class AssetbundleLoader : IAssetsLoader
             mAssetItemDic[bundleName] = tempItem;
         }
 
+        tempItem.assetPath = bundleName;
+        if (tempItem.isLoaded)
+        {
+            return tempItem;
+        }
+
         string innerPath = GameGlobal.ASSET_ROOT_PATH_INNER + bundleName;
-        AssetBundle bundle = AssetBundle.LoadFromFile(innerPath, 0, 0);
+        AssetBundle bundle = AssetBundle.LoadFromFile(innerPath);
         if (bundle)
         {
-            tempItem.assetPath = bundleName;
             tempItem.SetAssetBundle(bundle);
             return tempItem;
         }

@@ -12,6 +12,8 @@ using Object = UnityEngine.Object;
 public class AssetItem : ICacheable
 {
     public string assetPath;
+    public bool isLoaded;
+
     private AssetBundle mAssetBundle;
     /// <summary>
     /// 当前引用数量
@@ -21,15 +23,21 @@ public class AssetItem : ICacheable
     public Object LoadAsset(string assetName, Type assetType)
     {
         Object result = null;
+#if UNITY_EDITOR
         if (GameGlobal.EnableEditorLoadMode)
         {
             result = UnityEditor.AssetDatabase.LoadAssetAtPath(assetPath + "/" + assetName, assetType);
         }
-        else if (mAssetBundle != null)
+        else
         {
             result = mAssetBundle.LoadAsset(assetName, assetType);
         }
-
+#else
+        if (mAssetBundle != null)
+        {
+            result = mAssetBundle.LoadAsset(assetName, assetType);
+        }
+#endif
         return result;
     }
 
@@ -40,6 +48,7 @@ public class AssetItem : ICacheable
     public void SetAssetBundle(AssetBundle bundle)
     {
         mAssetBundle = bundle;
+        isLoaded = true;
     }
 
     public void Unload(bool unloadLoadedObjects)

@@ -3,7 +3,7 @@
 public class MoveBoxMgr : TSingleton<MoveBoxMgr>, IInitializeable, IUpdateable
 {
     private Transform m_transBox = null;
-    private float m_fSpeed = 0.005f;
+    private float m_fSpeed = 0.01f;
     private Vector3 m_vecDir = Vector3.zero;
     private Vector3 m_vecBallDir = Vector3.up;
 
